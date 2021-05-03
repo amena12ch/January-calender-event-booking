@@ -77,7 +77,7 @@ const EventForm = (props) => {
       <div className="row">
         <div className="column">
             {!eventExists &&  <label className="form-title">{eventDetails.day} January: Create Event</label>}
-            {eventExists &&  <label className="form-title">{eventDetails.day} January: Event</label>}
+            {eventExists &&  <label className="form-title">{eventDetails.day} January</label>}
         </div>
       </div>
       {!eventExists && 
@@ -85,10 +85,10 @@ const EventForm = (props) => {
          <div>
           <div className="row">
             <div className="column">
-              <label htmlFor="title">Title :</label>
+              <label htmlFor="title">Event name :</label>
               <input
                 type="text"
-                placeholder="Write your event title"
+                placeholder="Write your event name"
                 id="title"
                 value={title}
                 onChange={handleTitleChange}
@@ -123,7 +123,7 @@ const EventForm = (props) => {
     <div>
       <div className="row">
         <div className="column">
-          <label htmlFor="title"><strong>Title : </strong> {eventDetails.event.title}</label>
+          <label htmlFor="title"><strong>Event name : </strong> {eventDetails.event.title}</label>
         </div>            
       </div>
     </div>
