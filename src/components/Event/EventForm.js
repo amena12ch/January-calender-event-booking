@@ -7,10 +7,31 @@ import * as actions from "../../store/Calender/CalenderAction"
 
 const EventForm = (props) => {
   const dispatch = useDispatch();
-  const {eventDetails, colors} = props 
+  const {eventDetails} = props 
   const [title, setTitle] = useState(eventDetails?.event?.title || '');
   const [color, setColor] = useState(eventDetails?.event?.color);
-  
+  const  colors = [
+    {
+    code: '#FF5252',
+    name: 'red'
+    },
+    {
+    code: '#E040FB',
+    name: 'purple'
+    },
+    {
+    code: '#FF6E40',
+    name: 'orange'
+    },
+    {
+    code: '#CDDC39',
+    name: 'lime'
+    },
+    {
+    code: '#0097A7',
+    name: 'cyan'
+    }
+   ]
   const handleSelectChange = (e)=>{
   setColor(e.target.value)
   }
