@@ -54,7 +54,7 @@ const EventForm = (props) => {
         colorCode: colorCode[0]?.code
       } 
   }
-   dispatch(eventActions.createEvent(payload, eventDetails.id ))  
+   dispatch(eventActions.updateEvent(payload, eventDetails.id ))  
    dispatch(actions.closeEventModal())  
    dispatch(actions.getCalender()) 
   }
@@ -67,7 +67,7 @@ const EventForm = (props) => {
         event: {
         } 
     }
-     dispatch(eventActions.createEvent(payload, eventDetails.id ))  
+     dispatch(eventActions.updateEvent(payload, eventDetails.id ))  
      dispatch(actions.closeEventModal()) 
      dispatch(actions.getCalender()) 
     }
