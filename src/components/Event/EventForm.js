@@ -10,6 +10,7 @@ const EventForm = (props) => {
   const {eventDetails} = props 
   const [title, setTitle] = useState(eventDetails?.event?.title || '');
   const [color, setColor] = useState(eventDetails?.event?.color);
+  const eventExists = !!eventDetails?.event?.title;
   const  colors = [
     {
     code: '#FF5252',
@@ -32,17 +33,18 @@ const EventForm = (props) => {
     name: 'cyan'
     }
    ]
+                                     
   const handleSelectChange = (e)=>{
   setColor(e.target.value)
   }
+  
   const handleTitleChange = (e)=>{
     setTitle(e.target.value)
     }
   
   const submitCreateEvent = (e) =>{
   e.preventDefault();
-  const colorCode = colors?.filter(e =>e.name === color)
-  
+  const colorCode = colors?.filter(e =>e.name === color) 
   let payload = {  
       id: eventDetails.id,
       day: eventDetails.day,
@@ -55,11 +57,10 @@ const EventForm = (props) => {
    dispatch(eventActions.createEvent(payload, eventDetails.id ))  
    dispatch(actions.closeEventModal())  
    dispatch(actions.getCalender()) 
-
   }
+        
   const deleteEvent = (e) =>{
-    e.preventDefault();
-    
+    e.preventDefault();  
     let payload = {  
         id: eventDetails.id,
         day: eventDetails.day,
@@ -70,7 +71,7 @@ const EventForm = (props) => {
      dispatch(actions.closeEventModal()) 
      dispatch(actions.getCalender()) 
     }
-  const eventExists = !!eventDetails?.event?.title;
+  
   return (
     <React.Fragment>
       <div className="row">
@@ -123,8 +124,7 @@ const EventForm = (props) => {
       <div className="row">
         <div className="column">
           <label htmlFor="title"><strong>Title : </strong> {eventDetails.event.title}</label>
-        </div>
-            
+        </div>            
       </div>
     </div>
     <div className="row">
@@ -136,10 +136,7 @@ const EventForm = (props) => {
         />
       </div>
     </div>
-  </form>
-              
-}
-
+  </form>}
 </React.Fragment>
   );
 };
