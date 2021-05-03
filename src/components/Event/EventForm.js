@@ -85,7 +85,7 @@ const EventForm = (props) => {
          <div>
           <div className="row">
             <div className="column">
-              <label htmlFor="title">Event name :</label>
+              <label htmlFor="title">Event :</label>
               <input
                 type="text"
                 placeholder="Write your event name"
@@ -123,7 +123,7 @@ const EventForm = (props) => {
     <div>
       <div className="row">
         <div className="column">
-          <label htmlFor="title"><strong>Event name : </strong> {eventDetails.event.title}</label>
+          <label htmlFor="title"><strong>Event : </strong> {eventDetails.event.title}</label>
         </div>            
       </div>
     </div>
