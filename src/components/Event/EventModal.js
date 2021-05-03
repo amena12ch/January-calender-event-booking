@@ -30,7 +30,6 @@ const { isOpen, closeModal, eventDetails} = props
         key="main"
         eventDetails = {eventDetails}
       />
-
     </Modal>
   );
 };
