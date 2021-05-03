@@ -73,14 +73,15 @@ const EventForm = (props) => {
   const eventExists = !!eventDetails?.event?.title;
   return (
     <React.Fragment>
-    <div className="row">
-            <div className="column">
+      <div className="row">
+        <div className="column">
             {!eventExists &&  <label className="form-title">{eventDetails.day} January: Create Event</label>}
             {eventExists &&  <label className="form-title">{eventDetails.day} January: Event</label>}
-              </div></div>
+        </div>
+      </div>
       {!eventExists && 
         <form onSubmit={submitCreateEvent}>
-        <div>
+         <div>
           <div className="row">
             <div className="column">
               <label htmlFor="title">Title :</label>
@@ -92,10 +93,9 @@ const EventForm = (props) => {
                 onChange={handleTitleChange}
                 required
               />
-
             </div>
-            </div>
-            <div className="row">            
+          </div>
+          <div className="row">            
             <div className="column">
               <label>Color :</label>
               <select onChange={handleSelectChange}>
@@ -104,10 +104,8 @@ const EventForm = (props) => {
                     return (<option key={index} value={color.name}>{color.name}</option> )
                     })} 
               </select>
-              
             </div>
           </div>
-
           <div className="row">
             <div className="column column-50">
               <input
@@ -119,28 +117,29 @@ const EventForm = (props) => {
           </div>
       </div>
     </form>}
-{eventExists && 
+    {eventExists && 
   <form onSubmit={deleteEvent}>
-<div>
-          <div className="row">
-            <div className="column">
-              <label htmlFor="title"><strong>Title : </strong> {eventDetails.event.title}</label>
-              </div>
+    <div>
+      <div className="row">
+        <div className="column">
+          <label htmlFor="title"><strong>Title : </strong> {eventDetails.event.title}</label>
+        </div>
             
-              </div>
-              </div>
-           <div className="row">
-            <div className="column">
-              <input
-                className="button-primary"
-                type="submit"
-                value="Delete"
-              />
-            </div>
-          </div>
-              </form>
+      </div>
+    </div>
+    <div className="row">
+      <div className="column">
+        <input
+          className="button-primary"
+          type="submit"
+          value="Delete"
+        />
+      </div>
+    </div>
+  </form>
               
 }
+
 </React.Fragment>
   );
 };
