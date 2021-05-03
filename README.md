@@ -11,9 +11,10 @@ npm install
 ```
 npm run build
 ```
-## start Development mode
+## Start development mode
 
-1. Run the api server: json-server (to know more about: https://github.com/typicode/json-server)
+1. Run the api server: json-server
+  (to know more about json-server : https://github.com/typicode/json-server)
 
 ```
 npm run api
