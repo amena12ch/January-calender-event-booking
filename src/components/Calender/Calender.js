@@ -5,13 +5,11 @@ import EventModal from '../Event/EventModal';
 
 import * as actions from "../../store/Calender/CalenderAction"
 import * as eventActions from "../../store/Event/EventAction"
-import * as colorActions from "../../store/Color/ColorAction"
 
 class Calender extends Component {
 
   componentDidMount = () => {
     this.props.getCalender()
-    this.props.getColorList()
     }
 
   componentDidUpdate = () => {
@@ -40,7 +38,7 @@ class Calender extends Component {
     let day =calender[dayIndex-1]
     let style = day.event ? {backgroundColor :day.event.colorCode} :""
     days.push( <td key={day.id} className="table-element" style={style}>
-    <span onClick={() => this.openModal(day.id)}>{day.event.title && <strong>{day.day}</strong>} </span>  
+    <span onClick={() => this.openModal(day.id)}>{day.day} </span>  
 </td>)
     if( (dayIndex %7 === 0 && dayIndex > 1) || dayIndex > 30){
      week.push(<tr key={weekIndex}>{days}</tr>)
@@ -53,7 +51,7 @@ class Calender extends Component {
    return ( <tbody>{week}</tbody>)
   }
     render(){
-        const {isModalOpen , eventDetails, colors} = this.props;
+        const {isModalOpen , eventDetails} = this.props;
         return (
             <div className="container">
                 <div className="title">
@@ -80,8 +78,7 @@ class Calender extends Component {
                 <EventModal
                  isOpen={isModalOpen}
                  closeModal ={() => this.closeModal()}    
-                 eventDetails={eventDetails}   
-                 colors = {colors}     
+                 eventDetails={eventDetails}     
         />   
             </div>
         );
@@ -92,8 +89,7 @@ class Calender extends Component {
     return {
         isModalOpen: state.calender.isModalOpen,
         calender: state.calender.calender,
-        eventDetails : state.event.eventDetails,
-        colors : state.color.colors
+        eventDetails : state.event.eventDetails
     };
 };
 
@@ -102,8 +98,7 @@ const mapDispatchToProps = dispatch => {
         openEventModal :() => dispatch(actions.openEventModal()),
         closeEventModal :() => dispatch(actions.closeEventModal()),
         getCalender :() => dispatch(actions.getCalender()),
-        getEvent:(id) => dispatch(eventActions.getEvent(id)),
-        getColorList:() => dispatch(colorActions.getColorList())
+        getEvent:(id) => dispatch(eventActions.getEvent(id))
 
     }
 };
