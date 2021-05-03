@@ -27,19 +27,22 @@ class Calender extends Component {
  closeModal = () => {
     this.props.closeEventModal()   
  }
+ 
  renderJanuaryCalender = () => {
      const {calender} = this.props
       let weekIndex = 1
       let dayIndex = 0
       let days = [];
       let week = []
+      
    while (weekIndex <= 5 && dayIndex < calender?.length) {
     dayIndex++
     let day =calender[dayIndex-1]
     let style = day.event ? {backgroundColor :day.event.colorCode} :""
-    days.push( <td key={day.id} className="table-element" style={style}>
-    <span onClick={() => this.openModal(day.id)}>{day.day} </span>  
-</td>)
+    days.push(<td key={day.id} className="table-element" style={style}>
+                  <span onClick={() => this.openModal(day.id)}>{day.day}</span>
+              </td>)
+
     if( (dayIndex %7 === 0 && dayIndex > 1) || dayIndex > 30){
      week.push(<tr key={weekIndex}>{days}</tr>)
      if(dayIndex < 30){
@@ -48,8 +51,10 @@ class Calender extends Component {
      weekIndex ++
     }
    } 
-   return ( <tbody>{week}</tbody>)
+   
+   return (<tbody>{week}</tbody>)
   }
+           
     render(){
         const {isModalOpen , eventDetails} = this.props;
         return (
@@ -57,10 +62,9 @@ class Calender extends Component {
                 <div className="title">
                 January
                 </div> 
-
                 <div className="table-responsive-xl">
                   <table className="table table-bordered">
-                  <thead>
+                    <thead>
                       <tr>
                       <th className="table-header">S</th>
                       <th className="table-header">M</th>
@@ -70,22 +74,20 @@ class Calender extends Component {
                       <th className="table-header">F</th>
                       <th className="table-header">S</th>
                       </tr>
-                  </thead>
+                    </thead>
                       {this.renderJanuaryCalender()}                      
                   </table>
-
                 </div>  
                 <EventModal
                  isOpen={isModalOpen}
                  closeModal ={() => this.closeModal()}    
-                 eventDetails={eventDetails}     
-        />   
+                 eventDetails={eventDetails}/>   
             </div>
         );
     }
-
   }
-  const mapStateToProps = state => {
+
+const mapStateToProps = state => {
     return {
         isModalOpen: state.calender.isModalOpen,
         calender: state.calender.calender,
