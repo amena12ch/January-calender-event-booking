@@ -18,9 +18,8 @@ export  const getEvent = (id)=> {
     }
 }
 
-export  const createEvent = (data,id)=> {
-    return function (dispatch) {
-        
+export  const updateEvent = (data,id)=> {
+    return function (dispatch) {        
          ApiCaller.put('/events/'+id, data  ) 
         .then(response => {
             dispatch({
