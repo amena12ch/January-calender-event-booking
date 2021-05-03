@@ -15,7 +15,7 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const EventModal = (props) => {
-const { isOpen, closeModal, eventDetails, colors} = props
+const { isOpen, closeModal, eventDetails} = props
 
   return (
     <Modal
@@ -29,7 +29,6 @@ const { isOpen, closeModal, eventDetails, colors} = props
       <EventForm
         key="main"
         eventDetails = {eventDetails}
-        colors = {colors}
       />
 
     </Modal>
